@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 
 
+
 def getHsvThreshold(RGB):
     hsv = cv2.cvtColor(np.uint8([[RGB]]), cv2.COLOR_RGB2HSV)[0][0]
     print(hsv)
