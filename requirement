@@ -1,0 +1,9 @@
+apt-get:
+	essential:
+		python3.5
+		opencv3.1
+		t
+	tesss training:
+		libicu-dev 
+		libpango1.0-dev 
+		libcairo2-dev

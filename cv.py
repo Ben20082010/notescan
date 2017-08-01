@@ -5,7 +5,6 @@ import numpy as np
 
 def getHsvThreshold(RGB):
     hsv = cv2.cvtColor(np.uint8([[RGB]]), cv2.COLOR_RGB2HSV)[0][0]
-    print(hsv)
 
     # low=[hsv[0]-10,90,155 ]
     # high=[hsv[0]+10,160,224]
@@ -21,12 +20,12 @@ def viewPage(image):
     cv2.waitKey()
 
 # im = cv2.imread('page-0.jpg')
-im = cv2.imread('sample-1.jpg')
+im = cv2.imread('cache/1.jpg')
 im_hsv = cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
 
 lower_blue, upper_blue = getHsvThreshold([91, 155, 213])
 mask = cv2.inRange(im_hsv, lower_blue, upper_blue)
-blur=cv2.medianBlur(mask,5)
+blur=cv2.medianBlur(mask,5 )
 
 # opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
 
@@ -40,6 +39,7 @@ if hierarchy.max() != 6:
     cv2.imwrite('mask.jpg', blur)
     viewPage(mask)
     viewPage(blur)
+    print(cv2.contourArea(contours[0]))
     print('Does not have 7 contours (%s)' % hierarchy.max())
     # #DEBUG END
     raise Exception('Does not have 7 contours (%s)' % hierarchy.max())
@@ -49,10 +49,10 @@ idx = 0
 for cnt in contours:
     idx += 1
 
-    im3 = cv2.imread('sample-1.jpg')
+    im3 = cv2.imread('cache/1.jpg')
     x, y, w, h = cv2.boundingRect(cnt)
     roi = im3[y:y + h, x:x + w]
-    cv2.imwrite('%s.jpg' % idx, roi)
+    cv2.imwrite('cache/temp/%s.jpg' % idx, roi)
 
     # #DEBUG
     # cv2.drawContours(im3, [cnt], -1, (0, 255, 0), 50)
