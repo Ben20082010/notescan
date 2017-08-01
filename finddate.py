@@ -66,7 +66,12 @@ for cnt in contours:
 
         roigray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
         ret, dateimg = cv2.threshold(roigray, 127, 255, 0)
-        datestr=pytesseract.image_to_string(Image.fromarray(dateimg), lang="ben", config='-psm 7 -classify_bln_numeric_mode 1')
+
+        kernel = np.ones((3, 3), np.uint8)
+        dateimg = cv2.morphologyEx(dateimg, cv2.MORPH_OPEN, kernel)
+
+
+        datestr=pytesseract.image_to_string(Image.fromarray(dateimg), lang="number", config='-psm 7 -classify_bln_numeric_mode 1')
         # viewPage(dateimg,datestr)
         # cv2.imwrite('cache/temp/%s.jpg' % (idx-1), dateimg)
         cv2.imwrite('cache/temp/%s.jpg' % datestr, dateimg)
