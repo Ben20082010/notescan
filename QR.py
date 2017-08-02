@@ -21,10 +21,10 @@ def getQR(jsonData,size,):
     img = qr.make_image()
     # img = img.resize((size,size),Image.NEAREST)
     return img
-# jsonData = '{"7d529dd4-548b-4258-aa8e-23e34dc8d43d":99999999999}'
-# img=getQR(jsonData,50)
-# with open('QRtest.png', 'wb') as f:
-#     img.save(f)
+jsonData = '{"7d529dd4-548b-4258-aa8e-23e34dc8d43d":99999999999}'
+img=getQR(jsonData,50)
+with open('QRtest.png', 'wb') as f:
+    img.save(f)
 
 
 packet = BytesIO()

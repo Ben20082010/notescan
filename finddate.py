@@ -71,7 +71,7 @@ for cnt in contours:
         dateimg = cv2.morphologyEx(dateimg, cv2.MORPH_OPEN, kernel)
 
 
-        datestr=pytesseract.image_to_string(Image.fromarray(dateimg), lang="number", config='-psm 7 -classify_bln_numeric_mode 1')
+        datestr=pytesseract.image_to_string(Image.fromarray(dateimg), lang="number", config='-psm 6 -classify_bln_numeric_mode 1')
         # viewPage(dateimg,datestr)
         # cv2.imwrite('cache/temp/%s.jpg' % (idx-1), dateimg)
         cv2.imwrite('cache/temp/%s.jpg' % datestr, dateimg)
