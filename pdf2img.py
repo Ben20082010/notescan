@@ -3,7 +3,7 @@ from wand.color import Color
 
 
 
-im = Image(filename='test/template/note training.pdf', resolution=300)
+im = Image(filename='template/note.pdf', resolution=300)
 # im = Image(filename='test/M4/collision.pdf', resolution=300)
 
 for i, page in enumerate(im.sequence):

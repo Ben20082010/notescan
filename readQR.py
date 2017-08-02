@@ -4,7 +4,7 @@ import cv2
 import numpy
 
 
-im=cv2.imread('1.png')
+im=cv2.imread('cache/page-0.jpg')
 image=cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
 
 scanner=zbar.Scanner()

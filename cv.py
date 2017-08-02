@@ -19,8 +19,8 @@ def viewPage(image):
     cv2.imshow('view', view)
     cv2.waitKey()
 
-# im = cv2.imread('page-0.jpg')
-im = cv2.imread('cache/1.jpg')
+im = cv2.imread('cache/page-0.jpg')
+# im = cv2.imread('cache/1.jpg')
 im_hsv = cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
 
 lower_blue, upper_blue = getHsvThreshold([91, 155, 213])
@@ -49,13 +49,14 @@ idx = 0
 for cnt in contours:
     idx += 1
 
-    im3 = cv2.imread('cache/1.jpg')
+    im3 = cv2.imread('cache/page-0.jpg')
+    # im3 = cv2.imread('cache/1.jpg')
     x, y, w, h = cv2.boundingRect(cnt)
+    print(x, y, w, h)
     roi = im3[y:y + h, x:x + w]
     cv2.imwrite('cache/temp/%s.jpg' % idx, roi)
-
-    # #DEBUG
-    # cv2.drawContours(im3, [cnt], -1, (0, 255, 0), 50)
-    # viewPage(im3)
-    # #DEBUG END
+    #DEBUG
+    cv2.drawContours(im3, [cnt], -1, (0, 255, 0), 50)
+    viewPage(im3)
+    #DEBUG END
 
