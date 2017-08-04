@@ -6,9 +6,9 @@ from PIL import Image
 
 from func import *
 
-tempaltePath='template/note.pdf'
+templatePath= 'template/note.pdf'
 
-im = Im(filename=tempaltePath, resolution=300)
+im = Im(filename=templatePath, resolution=300)
 structures=[]
 
 ### get input of internal val
@@ -39,7 +39,7 @@ for i, page in enumerate(im.sequence):
     currentHrc=hierarchy[0][0] #[Next, Previous, First_Child, Parent]
     if currentHrc[0]>=0 or currentHrc[1]>=0:
         if currentHrc[3]<0:
-            raise Exception('Have more than one "2-level hierarchy" on page%s of file named %s' % (i, tempaltePath))
+            raise Exception('Have more than one "2-level hierarchy" on page%s of file named %s' % (i, templatePath))
         else:
             raise Exception('contour0 is not 1st level of "2-level hierarchy"')
 
