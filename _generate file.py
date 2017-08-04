@@ -7,7 +7,7 @@ from reportlab.lib.pagesizes import A4,cm
 
 
 
-def getQR(jsonData,size,):
+def genQR(jsonData,size,):
     # BUG unreadable QR code if size to small
     # json format: {"name(code) of the note" : number}
     qr = qrcode.QRCode(
@@ -24,7 +24,7 @@ def getQR(jsonData,size,):
 
 
 jsonData = '{"7d529dd4-548b-4258-aa8e-23e34dc8d43d":99999999999}'
-img=getQR(jsonData,50)
+img=genQR(jsonData,50)
 with open('QRtest.png', 'wb') as f:
     img.save(f)
 

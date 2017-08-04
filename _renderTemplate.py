@@ -46,22 +46,42 @@ for i, page in enumerate(im.sequence):
     ##### find section (assume internal!=0, =1)
     idx = 0
     cntId=currentHrc[2]
+    # print(contours[0])
+    xf,yf,wf,hf=cv2.boundingRect(contours[0]) # x father cnt, y father cnt ...
+    hp, wp, channels = page.shape # hp height of page, wp width of page
+
+    # # convert xywh to ratio with respect to page or 1st level of "2-level hierarchy"
+    # for cnt in contours:
+    #     x,y,w,h =cv2.boundingRect(cnt)
+    # xs, ys, ws, hs = contours[0, 3]
+    # if internal == 0:  # false include border, respect to page
+    #     ratios = [xs / wp, ys / hp, ws / wp, hs / hp]
+    # else:  # true respect to 1st level of "2-level hierarchy"
+    #     ratios = [(xs - xf) / wf, (ys - yf) / hf, ws / wf, hs / hf]
 
     while True:
         cnt=contours[cntId]
 
+        # process cnt2img
         idx += 1
         im3 = page.copy()
-        # im3 = cv2.imread('cache/1.jpg')
-        # x, y, w, h = cv2.boundingRect(cnt)
-        # print(x, y, w, h)
+        x, y, w, h = cv2.boundingRect(cnt)
         roi = cropImg(im3, cv2.boundingRect(cnt))
-        cv2.imwrite('cache/temp/%s.jpg' % idx, roi)
-        # DEBUG
+        # cv2.imwrite('cache/temp/%s.jpg' % idx, roi)
         cv2.drawContours(im3, [cnt], -1, (0, 255, 0), 50)
-        viewPage(im3)
+        # viewPage(im3)
+
+        if internal == '0':  # false include border, respect to page
+            ratios = [x/w, y/hp, w/wp, h/hp]
+        # else:  # true respect to 1st level of "2-level hierarchy"
+        #     ratios = [(x-xf) / wf, (y-yf)/hf, w/wf, h/hf]
+        name=input("name?")
+        structure[name]=ratios
 
         # check if reached last where cntId is the id for next cnt
         cntId=hierarchy[0][cntId][0]
         if cntId<0:
             break
+    structures.append(structure)
+    print(structure)
+print(structures)
