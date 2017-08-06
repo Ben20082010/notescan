@@ -45,9 +45,8 @@ def findQR(npImg):
     results = scanner.scan(npImg)
     return scanner.scan(npImg)
 
-def locateQR(npImg,CodeData=None,CodeType='QR-Code',returnArray=0,): # need ref
+def locateQR(npImg,CodeData=None,CodeType='QR-Code',returnArray=0,):
     image = cv2.cvtColor(npImg, cv2.COLOR_BGR2GRAY)
-    height, width = image.shape
     results = findQR(image)
 
     if CodeData != None:
@@ -59,27 +58,25 @@ def locateQR(npImg,CodeData=None,CodeType='QR-Code',returnArray=0,): # need ref
             if result.type != CodeType : results.remove(result)
 
     print(results)
-    if array==0:
+    if returnArray==0:
         if len(results) == 1:
             print(results)
             loc = results[0].position
             # in reportlab canvas start from bottom right coiner
-            xywh = np.array([loc[0][0], loc[0][1], loc[3][0] - loc[0][0], loc[2][1] - loc[0][1]])
-            xywh = np.round(xywh / width * 21, 3)
-            return xywh
+            raw_xywh = [loc[0][0], loc[0][1], loc[3][0] - loc[0][0], loc[2][1] - loc[0][1]]
+            return raw_xywh
         elif len(results)==0:
             return [-1,-1,-1,-1]
         else:
             raise Exception("more than 1 QR list")
     else:
-        xywhs=[]
+        raw_xywhs=[]
         for result in results:
             loc = results[0].position
             # in reportlab canvas start from bottom right coiner
-            xywh = np.array([loc[0][0], loc[0][1], loc[3][0] - loc[0][0], loc[2][1] - loc[0][1]])
-            xywh = np.round(xywh / width * 21, 3)
-            xywhs.append(xywh)
-        return xywhs
+            raw_xywh = [loc[0][0], loc[0][1], loc[3][0] - loc[0][0], loc[2][1] - loc[0][1]]
+            raw_xywhs.append(raw_xywh)
+        return raw_xywhs
 
 
 

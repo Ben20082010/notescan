@@ -32,7 +32,9 @@ for i, page in enumerate(im.sequence):
         # to be improved
     pageImg = cv2.imread('cache/page-%s.jpg' % i)
 
-    xywh=locateQR(pageImg)
+    height, width, channel = pageImg.shape
+    raw_xywh=numpy.array(locateQR(pageImg,returnArray=0))
+    xywh=numpy.round(raw_xywh / width * 21, 3)
 
     xywhs.append(xywh)
 

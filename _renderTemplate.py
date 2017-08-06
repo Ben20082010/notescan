@@ -47,8 +47,7 @@ for i, page in enumerate(im.sequence):
     idx = 0
     cntId=currentHrc[2]
     # print(contours[0])
-    xf,yf,wf,hf=cv2.boundingRect(contours[0]) # x father cnt, y father cnt ...
-    hp, wp, channels = page.shape # hp height of page, wp width of page
+
 
     # # convert xywh to ratio with respect to page or 1st level of "2-level hierarchy"
     # for cnt in contours:
@@ -58,6 +57,15 @@ for i, page in enumerate(im.sequence):
     #     ratios = [xs / wp, ys / hp, ws / wp, hs / hp]
     # else:  # true respect to 1st level of "2-level hierarchy"
     #     ratios = [(xs - xf) / wf, (ys - yf) / hf, ws / wf, hs / hf]
+
+    if mode == '0':  # false include border, respect to page
+        hp, wp, channels = page.shape  # hp height of page, wp width of page
+    elif mode == '1':  # ref to 1st level of "2-level hierarchy
+        xf, yf, wf, hf = cv2.boundingRect(contours[0])  # x father cnt, y father cnt ...
+    elif mode == '2':  # ref to QR code
+        xc, yc, wc, hc = locateQR(page.copy(), returnArray=0)  # x (QR)code, y (QR)code
+    else:
+        raise Exception('mode not specified')
 
     while True:
         cnt=contours[cntId]
@@ -76,9 +84,7 @@ for i, page in enumerate(im.sequence):
         elif mode == '1': # ref to 1st level of "2-level hierarchy
             ratios = [(x - xf) / wf, (y - yf) / hf, w / wf, h / hf]
         elif mode =='2': # ref to QR code
-            ratios=[]
-        else:
-            raise Exception('mode not specified')
+            ratios=[(x - xc) / wc, (y - yc) / hc, w / wc, h / hc]
 
         name=input("name?")
         structure[name]=ratios
