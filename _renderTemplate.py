@@ -11,9 +11,9 @@ templatePath= 'template/note.pdf'
 im = Im(filename=templatePath, resolution=300)
 structures=[]
 
-### get input of internal val
-internal = input("internal?")
-print(internal)
+### get input of mode val
+mode = input("mode?")
+print(mode)
 
 for i, page in enumerate(im.sequence):
     structure = {}
@@ -43,7 +43,7 @@ for i, page in enumerate(im.sequence):
         else:
             raise Exception('contour0 is not 1st level of "2-level hierarchy"')
 
-    ##### find section (assume internal!=0, =1)
+    ##### find section (assume mode!=0, =1)
     idx = 0
     cntId=currentHrc[2]
     # print(contours[0])
@@ -54,7 +54,7 @@ for i, page in enumerate(im.sequence):
     # for cnt in contours:
     #     x,y,w,h =cv2.boundingRect(cnt)
     # xs, ys, ws, hs = contours[0, 3]
-    # if internal == 0:  # false include border, respect to page
+    # if mode == 0:  # false include border, respect to page
     #     ratios = [xs / wp, ys / hp, ws / wp, hs / hp]
     # else:  # true respect to 1st level of "2-level hierarchy"
     #     ratios = [(xs - xf) / wf, (ys - yf) / hf, ws / wf, hs / hf]
@@ -71,10 +71,15 @@ for i, page in enumerate(im.sequence):
         cv2.drawContours(im3, [cnt], -1, (0, 255, 0), 50)
         # viewPage(im3)
 
-        if internal == '0':  # false include border, respect to page
+        if mode == '0':  # false include border, respect to page
             ratios = [x/w, y/hp, w/wp, h/hp]
-        # else:  # true respect to 1st level of "2-level hierarchy"
-        #     ratios = [(x-xf) / wf, (y-yf)/hf, w/wf, h/hf]
+        elif mode == '1': # ref to 1st level of "2-level hierarchy
+            ratios = [(x - xf) / wf, (y - yf) / hf, w / wf, h / hf]
+        elif mode =='2': # ref to QR code
+            ratios=[]
+        else:
+            raise Exception('mode not specified')
+
         name=input("name?")
         structure[name]=ratios
 

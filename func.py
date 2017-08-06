@@ -25,7 +25,7 @@ def cropImg(img,position):
 
 
 # ## QR
-def genQR(jsonData,size,):
+def genQR(jsonData):
     # BUG unreadable QR code if size to small
     # json format: {"name(code) of the note" : number}
     qr = qrcode.QRCode(
@@ -44,6 +44,44 @@ def findQR(npImg):
     scanner = zbar.Scanner()
     results = scanner.scan(npImg)
     return scanner.scan(npImg)
+
+def locateQR(npImg,CodeData=None,CodeType='QR-Code',returnArray=0,): # need ref
+    image = cv2.cvtColor(npImg, cv2.COLOR_BGR2GRAY)
+    height, width = image.shape
+    results = findQR(image)
+
+    if CodeData != None:
+        for result in results:  ### edit 1 pre list pre page
+            if result.data.decode() != CodeData : results.remove(result)
+
+    if CodeType != None:
+        for result in results:
+            if result.type != CodeType : results.remove(result)
+
+    print(results)
+    if array==0:
+        if len(results) == 1:
+            print(results)
+            loc = results[0].position
+            # in reportlab canvas start from bottom right coiner
+            xywh = np.array([loc[0][0], loc[0][1], loc[3][0] - loc[0][0], loc[2][1] - loc[0][1]])
+            xywh = np.round(xywh / width * 21, 3)
+            return xywh
+        elif len(results)==0:
+            return [-1,-1,-1,-1]
+        else:
+            raise Exception("more than 1 QR list")
+    else:
+        xywhs=[]
+        for result in results:
+            loc = results[0].position
+            # in reportlab canvas start from bottom right coiner
+            xywh = np.array([loc[0][0], loc[0][1], loc[3][0] - loc[0][0], loc[2][1] - loc[0][1]])
+            xywh = np.round(xywh / width * 21, 3)
+            xywhs.append(xywh)
+        return xywhs
+
+
 
 ### unit conversion
 
