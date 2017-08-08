@@ -4,7 +4,9 @@ import qrcode
 
 
 # ## Open CV
-def viewPage(image):
+def viewPage(image,resize=0):
+    if resize!=0:
+        image = cv2.resize(image, (0, 0), fx=0.35, fy=0.35)
     cv2.imshow('view', image)
     cv2.waitKey()
 
@@ -50,7 +52,7 @@ def order_points(pts):
     # return the ordered coordinates
     return rect
 
-def four_point_transform(image, pts,returnMatrix=0):
+def four_point_transform(image, pts, recover, returnMatrix=0):
     # obtain a consistent order of the points and unpack them individually
     # rect = order_points(pts)
     # (tl, tr, br, bl) = rect  # top-left, top-right, bottom-right, and bottom-left
@@ -78,15 +80,31 @@ def four_point_transform(image, pts,returnMatrix=0):
     # (i.e. top-down view) of the image, again specifying points
     # in the top-left, top-right, bottom-right, and bottom-left
     # order
+    #
+    # make top-right size of page as 0,0
+
+    xp,yp,wp,hp=recover  # with respect to QR code (ratio)
+    xp=xp*maxWidth  # covert to value from ratio (page from QR)
+    wp=wp*maxWidth
+    yp=yp*maxHeight
+    hp=hp*maxHeight
+
+    #change to QR from page
+
+    # pattern found by represent as vector
+    # (a,b) where a=xp, b=yp, c=xp+maxWidth, d=yp+maxHeight when use QR as reference
+    # (c,b) where a=xp, b=yp, c=xp+maxWidth, d=yp+maxHeight when use QR as reference
+    # (c,d) where a=xp, b=yp, c=xp+maxWidth, d=yp+maxHeight when use QR as reference
+    # (a,d) where a=xp, b=yp, c=xp+maxWidth, d=yp+maxHeight when use QR as reference
     dst = np.array([
-        [0, 0],
-        [maxWidth - 1, 0],
-        [maxWidth - 1, maxHeight - 1],
-        [0, maxHeight - 1]], dtype="float32")
+        [-xp-1, -yp-1],
+        [-xp+maxWidth - 1, -yp-1],
+        [-xp+maxWidth - 1, -yp+maxHeight - 1],
+        [-xp-1, -yp+maxHeight - 1]], dtype="float32")
 
     # compute the perspective transform matrix and then apply it
     M = cv2.getPerspectiveTransform(rect, dst)
-    warped = cv2.warpPerspective(image, M, (maxWidth, maxHeight))
+    warped = cv2.warpPerspective(image, M,(int(wp),int(hp)))
 
     # return the warped image
     if returnMatrix==0:
@@ -102,7 +120,7 @@ def genQR(jsonData):
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
         box_size=2,
-        border=0,
+        border=2,
     )
     qr.add_data(jsonData)
     qr.make(fit=True)
@@ -130,6 +148,7 @@ def locateQR(npGrayImg,CodeData=None,CodeType='QR-Code',returnArray=0,):
         if len(results) == 1:
             print(results)
             loc = results[0].position
+            # only use loc0,1,3 as they are accurate
             # in reportlab canvas start from bottom right coiner
             raw_xywh = [loc[0][0], loc[0][1], loc[3][0] - loc[0][0], loc[2][1] - loc[0][1]]
             return raw_xywh

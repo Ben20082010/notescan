@@ -5,7 +5,12 @@ import numpy
 from func import *
 
 
-im=cv2.imread('cache/t2.jpg')
+# im=cv2.imread('cache/t2.jpg')
+# im=cv2.imread('cache/page_0.jpg')
+
+im=cv2.imread('cache/page_0.jpg')
+
+
 image=cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
 
 scanner=zbar.Scanner()

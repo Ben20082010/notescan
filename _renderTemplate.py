@@ -6,7 +6,7 @@ from PIL import Image
 
 from func import *
 
-templatePath= 'template/note.pdf'
+templatePath= 'template/note_alt.pdf'
 
 im = Im(filename=templatePath, resolution=300)
 structures=[]
@@ -21,13 +21,14 @@ for i, page in enumerate(im.sequence):
     ##### load template
     with Im(page) as page_image:
         page_image.alpha_channel = False
-        page_image.save(filename='cache/page-%s.jpg' % i)
+        page_image.save(filename='cache/page%s.jpg' % i)
         # to be improved
-    page = cv2.imread('cache/page-%s.jpg' % i)
+    page = cv2.imread('cache/page%s.jpg' % i)
     # page = cv2.imread('cache/temp/1.jpg')
 
     ##process img, find contours
     page_hsv = cv2.cvtColor(page, cv2.COLOR_BGR2HSV)
+    page_gray = cv2.cvtColor(page, cv2.COLOR_BGR2GRAY)
 
     lower_blue, upper_blue = getHsvThreshold([91, 155, 213])  # user input
     mask = cv2.inRange(page_hsv, lower_blue, upper_blue)
@@ -60,7 +61,8 @@ for i, page in enumerate(im.sequence):
 
     hp, wp, channels = page.shape  # hp height of page, wp width of page
     xf, yf, wf, hf = cv2.boundingRect(contours[0])  # x father cnt, y father cnt ...
-    xc, yc, wc, hc = locateQR(page.copy(), returnArray=0)  # x (QR)code, y (QR)code
+
+    xc, yc, wc, hc = locateQR(page_gray.copy(), returnArray=0)  # x (QR)code, y (QR)code
     fixedItems={"page":[0,0,wp,hp],"edge":[xf, yf, wf, hf],"QR":[xc, yc, wc, hc]}
     for item,xyhw in fixedItems.items():
         x,y,w,h=xyhw

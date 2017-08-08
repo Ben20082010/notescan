@@ -19,7 +19,8 @@ pagesize=[21,29.7]
 # input
 start = 10 + 1 # 10 from sqlite
 numbers = int(input("number of pages to print?"))
-templatePath="template/note.pdf"
+# templatePath="template/note.pdf"
+templatePath="template/note_alt.pdf"
 templateName="7d529dd4-548b-4258-aa8e-23e34dc8d43d"
 
 # ##get locations QR code
@@ -33,7 +34,8 @@ for i, page in enumerate(im.sequence):
     pageImg = cv2.imread('cache/page-%s.jpg' % i)
 
     height, width, channel = pageImg.shape
-    raw_xywh=numpy.array(locateQR(pageImg,returnArray=0))
+    PageGray=cv2.cvtColor(pageImg,cv2.COLOR_BGR2GRAY)
+    raw_xywh=numpy.array(locateQR(PageGray.copy(),returnArray=0))
     xywh=numpy.round(raw_xywh / width * 21, 3)
 
     xywhs.append(xywh)
@@ -49,12 +51,14 @@ for num in range(start,start+numbers):
     #gen QR code
     print(num)
     img = genQR("%s:%s" % (templateName,num))
+    img=img.transpose(Image.FLIP_TOP_BOTTOM)
     with open('QR%s.png' % num, 'wb') as f:
         img.save(f)
 
     #gen pdf
     packet = BytesIO()
     can = canvas.Canvas(packet, pagesize=A4,bottomup=0)
+
     for xywh in xywhs:
         can.drawImage('QR%s.png' % num, xywh[0] * cm, xywh[1] * cm, xywh[2] * cm, xywh[3] * cm, )
         can.showPage()

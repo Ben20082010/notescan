@@ -19,7 +19,7 @@ def viewPage(image):
     cv2.imshow('view', view)
     cv2.waitKey()
 
-im = cv2.imread('cache/page-0.jpg')
+im = cv2.imread('cache/page0.jpg')
 # im = cv2.imread('cache/1.jpg')
 im_hsv = cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
 
@@ -49,7 +49,7 @@ idx = 0
 for cnt in contours:
     idx += 1
 
-    im3 = cv2.imread('cache/page-0.jpg')
+    im3 = cv2.imread('cache/page0.jpg')
     # im3 = cv2.imread('cache/1.jpg')
     x, y, w, h = cv2.boundingRect(cnt)
     print(x, y, w, h)
