@@ -3,7 +3,7 @@ import sqlite3
 
 # init DB
 # name => name of template eg note
-# version => version of template
+# templateVersion => templateVersion of template
 # count => count of print generated
 # layout => jason form of layout of pages eg [{qr:[x,y,w,h],date:[x,y,w,h],title:[x,y,w,h]}, {qr:[x,y,w,h],date:[x,y,w,h],title:[x,y,w,h]}]  <== [page1,page2]
 #   where [x,y,w,h] are ratio of length start from top-left side
@@ -22,5 +22,5 @@ import sqlite3
 #
 conn = sqlite3.connect('file:template/template.db', uri=True)
 c = conn.cursor()
-# name, version, count, layout, mode
-c.execute('''CREATE TABLE templates (name text NOT NULL , version int NOT NULL , count int DEFAULT 0, layout text, mode int DEFAULT 0, PRIMARY KEY ( name, version)   )''')
+# name, templateVersion, count, layout, mode
+c.execute('''CREATE TABLE templates (name text NOT NULL , templateVersion int NOT NULL , count int DEFAULT 0, layout text, mode int DEFAULT 0, PRIMARY KEY ( name, templateVersion)   )''')

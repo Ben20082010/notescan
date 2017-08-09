@@ -1,15 +1,17 @@
 import cv2, numpy
 import json
 import sqlite3
+import shutil
 
 from wand.image import Image as Im
 from PIL import Image
 
 from func import *
 
-templatePath= 'template/note_alt.pdf'
+# templatePath= 'template/note_alt.pdf'
+# templatePath= 'destination.pdf'
 # templatePath= 'template/note.pdf'
-
+templatePath=input("location of PDF relative to this py file")
 
 im = Im(filename=templatePath, resolution=600)
 structures=[]
@@ -107,18 +109,40 @@ for i, page in enumerate(im.sequence):
             break
     structures.append(structure)
     print(structure)
+
+
 print(structures)
 
 ## update to db
 conn = sqlite3.connect('file:template/template.db', uri=True)
 c = conn.cursor()
 
-
-template=[
-    templatePath.split("/")[-1].split(".")[0],
-    1,  #need change later
+insertTemplate=[
+    input("template name?"),
+    0,  #need change later
     0,
-    structures,
-    mode
-]  # name, version, count, layout, mode
-c.execute('INSERT INTO templates VALUES (?,?,?,?,?)',template)
+    json.dumps(structures),
+    2
+]  # name, templateVersion, count, layout, mode
+
+
+templates=c.execute('SELECT `name`,`templateVersion` FROM templates WHERE `name`=? ORDER by `templateVersion` DESC', [insertTemplate[0]]).fetchall()
+
+if len(templates)==0:
+    c.execute('INSERT INTO templates VALUES (?,?,?,?,?)', insertTemplate)
+else:
+    print("template name exist")
+    while True:
+        command=input("Do you wish to [C]ancel or make [n]ew templateVersion?")
+        # command=input("do you wish to [C]ancel or make [n]ew templateVersion or [R]place?")
+        if command=="C":
+            break
+        elif command=="n":
+            insertTemplate[1]=templates[0][1]+1 # +1 templateVersion number
+            c.execute('INSERT INTO templates VALUES (?,?,?,?,?)', insertTemplate)
+            break
+
+conn.commit()
+conn.close()
+
+shutil.copyfile(templatePath,'template/%s:%s' % (insertTemplate[0],insertTemplate[1]))

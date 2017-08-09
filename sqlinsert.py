@@ -12,22 +12,22 @@ insertTemplate=[
     0,
     json.dumps(structures),
     2
-]  # name, version, count, layout, mode
+]  # name, templateVersion, count, layout, mode
 
 
-templates=c.execute('SELECT `name`,`version` FROM templates WHERE `name`=? ORDER by `version` DESC', [insertTemplate[0]]).fetchall()
+templates=c.execute('SELECT `name`,`templateVersion` FROM templates WHERE `name`=? ORDER by `templateVersion` DESC', [insertTemplate[0]]).fetchall()
 
 if len(templates)==0:
     c.execute('INSERT INTO templates VALUES (?,?,?,?,?)', insertTemplate)
 else:
     print("template name exist")
     while True:
-        command=input("Do you wish to [C]ancel or make [n]ew version?")
-        # command=input("do you wish to [C]ancel or make [n]ew version or [R]place?")
+        command=input("Do you wish to [C]ancel or make [n]ew templateVersion?")
+        # command=input("do you wish to [C]ancel or make [n]ew templateVersion or [R]place?")
         if command=="C":
             break
         elif command=="n":
-            insertTemplate[1]=templates[0][1]+1 # +1 version number
+            insertTemplate[1]=templates[0][1]+1 # +1 templateVersion number
             c.execute('INSERT INTO templates VALUES (?,?,?,?,?)', insertTemplate)
             break
 

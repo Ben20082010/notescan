@@ -2,6 +2,15 @@ import cv2,numpy as np
 import zbar
 import qrcode
 
+from PyPDF2 import PdfFileWriter, PdfFileReader
+from io import BytesIO
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4,cm
+from PIL import Image
+
+
+from wand.image import Image as Im
+
 
 # ## Open CV
 def viewPage(image,resizeFactor=1):
@@ -121,7 +130,7 @@ def genQR(jsonData):
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
         box_size=2,
-        border=2,
+        border=0,
     )
     qr.add_data(jsonData)
     qr.make(fit=True)
@@ -166,6 +175,32 @@ def locateQR(npGrayImg,CodeData=None,CodeType='QR-Code',returnArray=0,):
             raw_xywhs.append(raw_xywh)
         return raw_xywhs
 
+def addQR2Template(templatePath,output, QRstr, xywhs):  #xywhs unit here is cm
+    img = genQR(QRstr)  ####
+    img = img.transpose(Image.FLIP_TOP_BOTTOM)
+    with open('%s.png' % QRstr, 'wb') as f:
+        img.save(f)
+
+    # gen pdf
+    packet = BytesIO()
+    can = canvas.Canvas(packet, pagesize=A4, bottomup=0)
+
+    for xywh in xywhs:
+        can.drawImage('%s.png' % QRstr, xywh[0] * cm, xywh[1] * cm, xywh[2] * cm, xywh[3] * cm, )
+        can.showPage()
+    can.save()
+    # packet.seek(0) #move to the beginning of the StringIO buffer
+    # 2input & 1output
+    new_pdf = PdfFileReader(packet)
+    # merge
+    template = PdfFileReader(open(templatePath, "rb"))
+    for i in range(template.getNumPages()):
+        page = template.getPage(i)
+        try:
+            page.mergePage(new_pdf.getPage(i))
+        except IndexError:
+            pass
+        output.addPage(page)
 
 
 ### unit conversion

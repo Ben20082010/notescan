@@ -1,5 +1,6 @@
 import qrcode
 import numpy
+import sqlite3
 from PIL import Image
 from PyPDF2 import PdfFileWriter, PdfFileReader
 from io import BytesIO
@@ -11,17 +12,39 @@ from wand.image import Image as Im
 
 from func import *
 
+conn = sqlite3.connect('file:template/template.db', uri=True)
+c = conn.cursor()
+
 pagesize=[21,29.7]
 
 
 # def genPage(id,idx):
 
 # input
-start = 10 + 1 # 10 from sqlite
-numbers = int(input("number of pages to print?"))
+
+templateName=input('name of template?')
+
+templates=c.execute('SELECT `name`,`version`,`count` FROM templates WHERE `name`=? ORDER by `version` DESC',[templateName]).fetchall()
+try:
+    templateVersion=int(input("\nVersion of template (%s-%s) ?" % (templates[-1][1], templates[0][1])))
+except ValueError:
+    templateVersion = templates[0][1]
+    print("invalid input, use latest version (%s)" % templateVersion)
+findVersion=False
+for template in templates:
+    if templateVersion == template[1]:
+        start = template[2]
+        findVersion=True
+        break
+if findVersion == False: raise Exception("Version not exist in DB")
+
+numbers = int(input("\nnumber of pages to print?"))
+
+
+
 # templatePath="template/note.pdf"
-templatePath="template/note_alt.pdf"
-templateName="7d529dd4-548b-4258-aa8e-23e34dc8d43d"
+# templatePath="template/note_alt.pdf"
+templatePath="template/%s:%s" % (templateName, templateVersion)
 
 # ##get locations QR code
 xywhs=[]
@@ -45,37 +68,24 @@ for i, page in enumerate(im.sequence):
 
 # create a new PDF with Reportlab
 output = PdfFileWriter()
-outputStream = open("destination.pdf", "wb")
-for num in range(start,start+numbers):
 
+for num in range(start,start+numbers):
     #gen QR code
     print(num)
-    img = genQR("%s:%s" % (templateName,num))
-    img=img.transpose(Image.FLIP_TOP_BOTTOM)
-    with open('QR%s.png' % num, 'wb') as f:
-        img.save(f)
+    QRStr="%s:%s.%s" % (templateName, templateVersion, num)
+    addQR2Template(templatePath,output,QRStr,xywhs)
 
-    #gen pdf
-    packet = BytesIO()
-    can = canvas.Canvas(packet, pagesize=A4,bottomup=0)
 
-    for xywh in xywhs:
-        can.drawImage('QR%s.png' % num, xywh[0] * cm, xywh[1] * cm, xywh[2] * cm, xywh[3] * cm, )
-        can.showPage()
-    can.save()
-    # packet.seek(0) #move to the beginning of the StringIO buffer
-    # 2input & 1output
-    new_pdf = PdfFileReader(packet)
-    # merge
-    template = PdfFileReader(open(templatePath, "rb"))
-    for i in range(template.getNumPages()):
-        page = template.getPage(i)
-        try:
-            page.mergePage(new_pdf.getPage(i))
-        except IndexError:
-            pass
-        output.addPage(page)
 
+## update count before write to file
+c.execute('UPDATE templates SET count = ? WHERE name=? and version=?', [start + numbers, templateName, templateVersion])
+conn.commit()
+conn.close()
+
+## write to file
+outputStream = open("destination.pdf", "wb")
 output.write(outputStream)
 # finally, write "output" to a real file
 outputStream.close()
+
+
