@@ -4,9 +4,10 @@ import qrcode
 
 
 # ## Open CV
-def viewPage(image,resize=0):
-    if resize!=0:
-        image = cv2.resize(image, (0, 0), fx=0.35, fy=0.35)
+def viewPage(image,resizeFactor=1):
+    # 300 => 0.35
+    # 600 => 0.175
+    image = cv2.resize(image, (0, 0), fx=resizeFactor, fy=resizeFactor)
     cv2.imshow('view', image)
     cv2.waitKey()
 

@@ -22,4 +22,5 @@ import sqlite3
 #
 conn = sqlite3.connect('file:template/template.db', uri=True)
 c = conn.cursor()
+# name, version, count, layout, mode
 c.execute('''CREATE TABLE templates (name text NOT NULL , version int NOT NULL , count int DEFAULT 0, layout text, mode int DEFAULT 0, PRIMARY KEY ( name, version)   )''')

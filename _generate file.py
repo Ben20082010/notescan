@@ -25,7 +25,7 @@ templateName="7d529dd4-548b-4258-aa8e-23e34dc8d43d"
 
 # ##get locations QR code
 xywhs=[]
-im = Im(filename=templatePath, resolution=300)
+im = Im(filename=templatePath, resolution=600)
 for i, page in enumerate(im.sequence):
     with Im(page) as page_image:
         page_image.alpha_channel = False

@@ -1,5 +1,6 @@
 import cv2, numpy
 import json
+import sqlite3
 
 from wand.image import Image as Im
 from PIL import Image
@@ -7,8 +8,10 @@ from PIL import Image
 from func import *
 
 templatePath= 'template/note_alt.pdf'
+# templatePath= 'template/note.pdf'
 
-im = Im(filename=templatePath, resolution=300)
+
+im = Im(filename=templatePath, resolution=600)
 structures=[]
 
 ### get input of mode val
@@ -105,3 +108,17 @@ for i, page in enumerate(im.sequence):
     structures.append(structure)
     print(structure)
 print(structures)
+
+## update to db
+conn = sqlite3.connect('file:template/template.db', uri=True)
+c = conn.cursor()
+
+
+template=[
+    templatePath.split("/")[-1].split(".")[0],
+    1,  #need change later
+    0,
+    structures,
+    mode
+]  # name, version, count, layout, mode
+c.execute('INSERT INTO templates VALUES (?,?,?,?,?)',template)
