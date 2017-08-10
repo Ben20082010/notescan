@@ -2,6 +2,7 @@ import cv2,numpy as np
 import zbar
 import qrcode
 import datetime
+import pytesseract
 
 from PyPDF2 import PdfFileWriter, PdfFileReader
 from io import BytesIO
@@ -217,3 +218,27 @@ def validateDate(dateStr):
     except ValueError:
         raise Exception("Date format not correct")
     return date
+
+
+
+
+def img2date(imgGray):
+    ret, dateimg = cv2.threshold(imgGray, 100, 255, 0)
+    viewPage(dateimg)
+    kernel = np.ones((3, 3), np.uint8)
+    dateimg = cv2.morphologyEx(dateimg, cv2.MORPH_OPEN, kernel)
+    datestr=pytesseract.image_to_string(Image.fromarray(dateimg), lang="number", config='-psm 6 -classify_bln_numeric_mode 1')
+    print(datestr)
+    return validateDate(datestr)
+
+
+def img2str(imgGray,singleLine=1):
+    ret, dateimg = cv2.threshold(imgGray, 127, 255, 0)
+
+    kernel = np.ones((3, 3), np.uint8)
+    dateimg = cv2.morphologyEx(dateimg, cv2.MORPH_OPEN, kernel)
+
+    datestr=pytesseract.image_to_string(Image.fromarray(dateimg), lang="english", config='-psm 6 -classify_bln_numeric_mode 1')
+
+    return validateDate("20   9 2015")
+

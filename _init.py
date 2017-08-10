@@ -22,11 +22,16 @@ import sqlite3
 #
 conn = sqlite3.connect('file:template/template.db', uri=True)
 c = conn.cursor()
-
 # name, version, count, layout, mode
 c.execute('''CREATE TABLE templates (name text NOT NULL , version int NOT NULL , count int DEFAULT 0, layout text, mode int DEFAULT 0, PRIMARY KEY ( name, version)   )''')
-
-c.execute('''CREATE TABLE notes (QRcode text NOT NULL  PRIMARY KEY , heading text NOT NULL , `sub-heading` text NOT NULL ,summary text, date date)''')
-
 conn.commit()
 conn.close()
+
+
+
+conn2 = sqlite3.connect('file:files/files.db', uri=True)
+c2 = conn2.cursor()
+# QRcode, subject, heading, sub-heading, summary, date
+c2.execute('''CREATE TABLE class (QRcode text NOT NULL  PRIMARY KEY ,subject text NOT NULL, heading text NOT NULL , `sub-heading` text NOT NULL ,summary text, date date)''')
+conn2.commit()
+conn2.close()
