@@ -72,7 +72,7 @@ output = PdfFileWriter()
 for num in range(start,start+numbers):
     #gen QR code
     print(num)
-    QRStr="%s:%s.%s" % (templateName, templateVersion, num)
+    QRStr="%s:%s:%s" % (templateName, templateVersion, num)
     addQR2Template(templatePath,output,QRStr,xywhs)
 
 

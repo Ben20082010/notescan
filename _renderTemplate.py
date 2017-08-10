@@ -72,7 +72,7 @@ for i, page in enumerate(im.sequence):
     for item,xyhw in fixedItems.items():
         x,y,w,h=xyhw
         if mode == '0':  # false include border, respect to page
-            ratios = [x / w, y / hp, w / wp, h / hp]
+            ratios = [x / wp, y / hp, w / wp, h / hp]
         elif mode == '1':  # ref to 1st level of "2-level hierarchy
             ratios = [(x - xf) / wf, (y - yf) / hf, w / wf, h / hf]
         elif mode == '2':  # ref to QR code
@@ -94,7 +94,7 @@ for i, page in enumerate(im.sequence):
         # viewPage(im3)
 
         if mode == '0':  # false include border, respect to page
-            ratios = [x/w, y/hp, w/wp, h/hp]
+            ratios = [x/wp, y/hp, w/wp, h/hp]
         elif mode == '1': # ref to 1st level of "2-level hierarchy
             ratios = [(x - xf) / wf, (y - yf) / hf, w / wf, h / hf]
         elif mode =='2': # ref to QR code
@@ -126,7 +126,7 @@ insertTemplate=[
 ]  # name, templateVersion, count, layout, mode
 
 
-templates=c.execute('SELECT `name`,`templateVersion` FROM templates WHERE `name`=? ORDER by `templateVersion` DESC', [insertTemplate[0]]).fetchall()
+templates=c.execute('SELECT `name`,`version` FROM templates WHERE `name`=? ORDER by `version` DESC', [insertTemplate[0]]).fetchall()
 
 if len(templates)==0:
     c.execute('INSERT INTO templates VALUES (?,?,?,?,?)', insertTemplate)

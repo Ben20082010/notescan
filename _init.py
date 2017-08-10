@@ -22,5 +22,11 @@ import sqlite3
 #
 conn = sqlite3.connect('file:template/template.db', uri=True)
 c = conn.cursor()
-# name, templateVersion, count, layout, mode
-c.execute('''CREATE TABLE templates (name text NOT NULL , templateVersion int NOT NULL , count int DEFAULT 0, layout text, mode int DEFAULT 0, PRIMARY KEY ( name, templateVersion)   )''')
+
+# name, version, count, layout, mode
+c.execute('''CREATE TABLE templates (name text NOT NULL , version int NOT NULL , count int DEFAULT 0, layout text, mode int DEFAULT 0, PRIMARY KEY ( name, version)   )''')
+
+c.execute('''CREATE TABLE notes (QRcode text NOT NULL  PRIMARY KEY , heading text NOT NULL , `sub-heading` text NOT NULL ,summary text, date date)''')
+
+conn.commit()
+conn.close()

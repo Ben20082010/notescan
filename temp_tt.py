@@ -1,10 +1,9 @@
-aa=[[1],[2],[5,2,3],[4],[5]]
+import sqlite3
 
+conn = sqlite3.connect('file:template/template.db', uri=True)
+c = conn.cursor()
 
+structure,mode = c.execute('SELECT `layout`,`mode` FROM templates WHERE `name`=? and version=?', ["note_alt", 0]).fetchall()[0]
 
-for a in aa:
-    if a[0]==5:
-        aa.remove(a)
-print(aa)
-
-print(len(aa))
+print(structure)
+print(mode)

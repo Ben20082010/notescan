@@ -3,8 +3,8 @@ from wand.color import Color
 
 
 
-# im = Image(filename='template/note_alt.pdf', resolution=600)
-im = Image(filename='template/note.pdf', resolution=600)
+im = Image(filename='i/note.pdf', resolution=600)
+# im = Image(filename='template/notex:0', resolution=600)
 
 # im = Image(filename='destination.pdf', resolution=300)
 

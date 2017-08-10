@@ -1,6 +1,7 @@
 import cv2,numpy as np
 import zbar
 import qrcode
+import datetime
 
 from PyPDF2 import PdfFileWriter, PdfFileReader
 from io import BytesIO
@@ -203,5 +204,16 @@ def addQR2Template(templatePath,output, QRstr, xywhs):  #xywhs unit here is cm
         output.addPage(page)
 
 
-### unit conversion
-
+### date conversion
+def validateDate(dateStr):
+    try:
+        D,M,Y=list(filter(None, dateStr.split(" ")))
+        date = datetime.datetime(int(Y), int(M), int(D))
+        #  ##more compare in the further
+        # if D>31:
+        #     raise Exception("day(%s) greater than 31",D)
+        # if M>12:
+        #     raise Exception("month(%s) greater than 12",M)
+    except ValueError:
+        raise Exception("Date format not correct")
+    return date
