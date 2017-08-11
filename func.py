@@ -9,9 +9,21 @@ from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4,cm
 from PIL import Image
+from wand.image import Image as Im
 
 
 from wand.image import Image as Im
+
+# ## PDF
+def pdf2img(pdfPath,resolution=600):
+    im = Im(filename=pdfPath, resolution=resolution)
+    imgs=[]
+    for i, page in enumerate(im.sequence):
+        with Image(page) as page_image:
+            page_image.alpha_channel = False
+            page_image.save(filename='cache/page-%s.jpg' % i)
+            imgs.append('cache/page-%s.jpg' % i)
+    return imgs
 
 
 # ## Open CV
@@ -37,7 +49,6 @@ def cropImg(img,position):
     x,y,w,h=position
     roi = img[y:y + h, x:x + w]
     return roi
-
 
 # the function order_points and four_point_transform are from
 # http://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/
@@ -205,7 +216,7 @@ def addQR2Template(templatePath,output, QRstr, xywhs):  #xywhs unit here is cm
         output.addPage(page)
 
 
-### date conversion
+# ## date conversion
 def validateDate(dateStr):
     try:
         D,M,Y=list(filter(None, dateStr.split(" ")))
@@ -219,9 +230,6 @@ def validateDate(dateStr):
         raise Exception("Date format not correct")
     return date
 
-
-
-
 def img2date(imgGray):
     ret, dateimg = cv2.threshold(imgGray, 100, 255, 0)
     viewPage(dateimg)
@@ -231,14 +239,31 @@ def img2date(imgGray):
     print(datestr)
     return validateDate(datestr)
 
-
-def img2str(imgGray,singleLine=1):
+def img2strs(imgGray):
     ret, dateimg = cv2.threshold(imgGray, 127, 255, 0)
 
     kernel = np.ones((3, 3), np.uint8)
-    dateimg = cv2.morphologyEx(dateimg, cv2.MORPH_OPEN, kernel)
+    strimg = cv2.morphologyEx(dateimg, cv2.MORPH_OPEN, kernel)
 
-    datestr=pytesseract.image_to_string(Image.fromarray(dateimg), lang="english", config='-psm 6 -classify_bln_numeric_mode 1')
+    strstr=pytesseract.image_to_string(Image.fromarray(strimg), lang="english", config='-psm 6 -l eng')
 
-    return validateDate("20   9 2015")
+    return strstr
+
+# ## input
+def checkInput(inputstr,inputname=None,case=0):
+    while True:
+        str=input("Please check the %s is the following (press enter to confirm) \n %s \n" % (inputname,inputstr))
+        if str=='':
+            break
+        else:
+            inputstr = str
+
+        if case > 0:
+            inputstr=inputstr.upper()
+            print("upper")
+        elif case < 0:
+            print("lower")
+            inputstr=inputstr.lower()
+
+    return inputstr
 

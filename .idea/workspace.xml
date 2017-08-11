@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6f9cc2a-e337-4659-965c-241ebe661fa4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/files/files.db" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OCR.py" afterPath="$PROJECT_DIR$/OCR.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_init.py" afterPath="$PROJECT_DIR$/_init.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_scan.py" afterPath="$PROJECT_DIR$/_scan.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/func.py" afterPath="$PROJECT_DIR$/func.py" />
@@ -17,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/notescan$_init.coverage" NAME="_init Coverage Results" MODIFIED="1502375251235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/notescan$_init.coverage" NAME="_init Coverage Results" MODIFIED="1502416862909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notescan$photo2page.coverage" NAME="photo2page Coverage Results" MODIFIED="1501674377048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notescan$readQR.coverage" NAME="readQR Coverage Results" MODIFIED="1502276809610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notescan$QR.coverage" NAME="QR Coverage Results" MODIFIED="1502193883654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -25,7 +24,7 @@
     <SUITE FILE_PATH="coverage/notescan$sqlinsert.coverage" NAME="sqlinsert Coverage Results" MODIFIED="1502256499353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notescan$pdf2img.coverage" NAME="pdf2img Coverage Results" MODIFIED="1502275971304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notescan$OCR.coverage" NAME="OCR Coverage Results" MODIFIED="1502360321868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/notescan$_scan.coverage" NAME="_scan Coverage Results" MODIFIED="1502376881934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/notescan$_scan.coverage" NAME="_scan Coverage Results" MODIFIED="1502430472610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notescan$getBox.coverage" NAME="getBox Coverage Results" MODIFIED="1502350735896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notescan$_generate_file.coverage" NAME="_generate file Coverage Results" MODIFIED="1502346357271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notescan$perspectiveTransform.coverage" NAME="perspectiveTransform Coverage Results" MODIFIED="1502260177225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -48,39 +47,85 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="func.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/func.py">
+      <file leaf-file-name="_scan.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_scan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="240" column="102" lean-forward="false" selection-start-line="240" selection-start-column="102" selection-end-line="240" selection-end-column="102" />
+            <state relative-caret-position="1505">
+              <caret line="647" column="128" lean-forward="false" selection-start-line="647" selection-start-column="128" selection-end-line="647" selection-end-column="128" />
               <folding>
-                <element signature="e#0#22#0" expanded="true" />
-                <element signature="e#533#756#0" expanded="false" />
-                <element signature="e#789#852#0" expanded="false" />
-                <element signature="e#1917#4318#0" expanded="false" />
+                <element signature="e#0#14#0" expanded="true" />
+                <marker date="1502430472501" expanded="true" signature="2142:2208" ph="SELECT `layo... templates" />
+                <marker date="1502430472501" expanded="true" signature="2721:2763" ph="..." />
+                <marker date="1502430472501" expanded="true" signature="4801:4843" ph="INSERT INTO `classes`... " />
+                <marker date="1502430472501" expanded="true" signature="5154:5195" ph="UPDATE class... " />
+                <marker date="1502430472501" expanded="true" signature="5154:5208" ph="UPDATE class... " />
+                <marker date="1502430472501" expanded="true" signature="5154:5224" ph="UPDATE class... " />
+                <marker date="1502430472501" expanded="true" signature="5154:5256" ph="UPDATE class... " />
+                <marker date="1502430472501" expanded="true" signature="7295:7361" ph="SELECT `layo... templates" />
+                <marker date="1502430472501" expanded="true" signature="9954:9996" ph="INSERT INTO `classes`... " />
+                <marker date="1502430472501" expanded="true" signature="10307:10409" ph="UPDATE `clas... " />
+                <marker date="1502430472501" expanded="true" signature="12448:12514" ph="SELECT `layo... templates" />
+                <marker date="1502430472501" expanded="true" signature="15107:15149" ph="INSERT INTO `classes`... " />
+                <marker date="1502430472501" expanded="true" signature="15460:15562" ph="UPDATE `clas... " />
+                <marker date="1502430472501" expanded="true" signature="17601:17667" ph="SELECT `layo... templates" />
+                <marker date="1502430472501" expanded="true" signature="20260:20302" ph="INSERT INTO `classes`... " />
+                <marker date="1502430472501" expanded="true" signature="20613:20715" ph="UPDATE `clas... " />
+                <marker date="1502430472501" expanded="true" signature="22754:22820" ph="SELECT `layo... templates" />
+                <marker date="1502430472501" expanded="true" signature="25413:25455" ph="INSERT INTO `classes`... " />
+                <marker date="1502430472501" expanded="true" signature="25766:25868" ph="UPDATE `clas... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db.py">
+      <file leaf-file-name="pdf2img.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pdf2img.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="100">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_init.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="func.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/func.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="34" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+              <folding>
+                <element signature="e#750#902#0" expanded="false" />
+                <element signature="e#935#1158#0" expanded="false" />
+                <element signature="e#1191#1254#0" expanded="false" />
+                <element signature="e#1256#1317#0" expanded="false" />
+                <element signature="e#1436#2249#0" expanded="false" />
+                <element signature="e#2318#4719#0" expanded="false" />
+                <element signature="e#4752#5133#0" expanded="false" />
+                <element signature="e#4752#4793#0" expanded="false" />
+                <element signature="e#5162#5221#0" expanded="false" />
+                <element signature="e#5300#6433#0" expanded="false" />
+                <element signature="e#6518#7316#0" expanded="false" />
+                <element signature="e#7368#7771#0" expanded="false" />
+                <element signature="e#7381#7681#0" expanded="false" />
+                <element signature="e#7491#7523#0" expanded="false" />
+                <element signature="e#7800#8154#0" expanded="false" />
+                <element signature="e#8183#8460#0" expanded="false" />
+                <marker date="1502430423789" expanded="true" signature="0:8461" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_init.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_init.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="720">
+              <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
               <folding>
-                <marker date="1502375443778" expanded="true" signature="1275:1429" ph="CREATE TABLE... templates" />
-                <marker date="1502375443778" expanded="true" signature="1610:1765" ph="CREATE TABLE... notes" />
+                <marker date="1502416854160" expanded="true" signature="1283:1437" ph="CREATE TABLE... templates" />
+                <marker date="1502416854160" expanded="true" signature="1622:1779" ph="CREATE TABLE... notes" />
               </folding>
             </state>
           </provider>
@@ -89,7 +134,7 @@
       <file leaf-file-name="OCR.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OCR.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
+            <state relative-caret-position="360">
               <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -101,8 +146,8 @@
       <file leaf-file-name="finddate.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/finddate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="64" column="35" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="35" />
+            <state relative-caret-position="1220">
+              <caret line="64" column="35" lean-forward="false" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="35" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -113,37 +158,10 @@
       <file leaf-file-name="getBox.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getBox.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-221">
+            <state relative-caret-position="60">
               <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="temp_tt.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/temp_tt.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="126" lean-forward="false" selection-start-line="5" selection-start-column="126" selection-end-line="5" selection-end-column="126" />
-              <folding>
-                <marker date="1502348191089" expanded="true" signature="125:191" ph="SELECT `layo... templates" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_renderTemplate.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_renderTemplate.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1159">
-              <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="117" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-                <marker date="1502275890048" expanded="true" signature="4318:4395" ph="SELECT `name... templates" />
-                <marker date="1502275890048" expanded="true" signature="4468:4508" ph="INSERT INTO templates... " />
-                <marker date="1502275890048" expanded="true" signature="4925:4965" ph="INSERT INTO templates... " />
               </folding>
             </state>
           </provider>
@@ -204,8 +222,8 @@
         <option value="$PROJECT_DIR$/temp_tt.py" />
         <option value="$PROJECT_DIR$/getBox.py" />
         <option value="$PROJECT_DIR$/OCR.py" />
-        <option value="$PROJECT_DIR$/_init.py" />
         <option value="$PROJECT_DIR$/db.py" />
+        <option value="$PROJECT_DIR$/_init.py" />
         <option value="$PROJECT_DIR$/func.py" />
         <option value="$PROJECT_DIR$/_scan.py" />
       </list>
@@ -218,10 +236,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="53" />
-    <option name="y" value="-4" />
-    <option name="width" value="2507" />
-    <option name="height" value="1444" />
+    <option name="x" value="52" />
+    <option name="y" value="-11" />
+    <option name="width" value="2509" />
+    <option name="height" value="1452" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -239,6 +257,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -355,7 +374,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -364,15 +382,16 @@
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cache" />
+      <recent name="$PROJECT_DIR$/i" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/cache" />
       <recent name="$PROJECT_DIR$/template" />
       <recent name="$PROJECT_DIR$/cache/temp2" />
       <recent name="$PROJECT_DIR$/" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/i" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -691,19 +710,17 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="53" y="-4" width="2507" height="1444" extended-state="6" />
-    <editor active="true" />
+    <frame x="52" y="-11" width="2509" height="1452" extended-state="6" />
     <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17590746" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901752" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21103653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17590746" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960477" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33258763" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.046669327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -714,6 +731,7 @@
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32960477" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960477" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -751,12 +769,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/func.py</url>
-          <line>98</line>
+          <line>109</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/func.py</url>
-          <line>110</line>
+          <line>121</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -773,7 +791,7 @@
           <properties exception="BaseException" />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="40" />
+      <option name="time" value="42" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -782,15 +800,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cache/1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cache/temp/3.jpg" />
-    <entry file="file://$PROJECT_DIR$/cache/temp/7.jpg" />
-    <entry file="file://$PROJECT_DIR$/cache/temp/1.jpg" />
-    <entry file="file://$PROJECT_DIR$/QR1.png" />
     <entry file="file://$PROJECT_DIR$/QR6.png" />
     <entry file="file://$USER_HOME$/python35-opencv31/lib/python3.5/site-packages/PyPDF2/pdf.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -910,11 +919,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cache/t13.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cache/page_0.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -938,13 +942,6 @@
     <entry file="file://$PROJECT_DIR$/cache/page-0.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pdf2img.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="13" column="45" lean-forward="false" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cache/page0.jpg">
@@ -988,12 +985,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="511">
           <caret line="74" column="17" lean-forward="false" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <marker date="1502346357164" expanded="true" signature="468:553" ph="SELECT `name... templates" />
-            <marker date="1502346357164" expanded="true" signature="2141:2198" ph="INSERT INTO templates... " />
-            <marker date="1502346357164" expanded="true" signature="2141:2250" ph="UPDATE templ... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1011,18 +1002,53 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="126" lean-forward="false" selection-start-line="5" selection-start-column="126" selection-end-line="5" selection-end-column="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/summary.jpg" />
+    <entry file="file://$PROJECT_DIR$/cache/ocr/t.txt.txt" />
+    <entry file="file://$PROJECT_DIR$/cache/ocr/sub-heading.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OCR.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding>
-            <marker date="1502348191089" expanded="true" signature="125:191" ph="SELECT `layo... templates" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/finddate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1220">
+          <caret line="64" column="35" lean-forward="false" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/1471977838/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="5132" column="8" lean-forward="false" selection-start-line="5132" selection-start-column="8" selection-end-line="5132" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cache/ocr/heading.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_renderTemplate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1159">
-          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="117" selection-end-column="17" />
+        <state relative-caret-position="-2001">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="13" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
             <marker date="1502275890048" expanded="true" signature="4318:4395" ph="SELECT `name... templates" />
             <marker date="1502275890048" expanded="true" signature="4468:4508" ph="INSERT INTO templates... " />
             <marker date="1502275890048" expanded="true" signature="4925:4965" ph="INSERT INTO templates... " />
@@ -1032,7 +1058,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/getBox.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
+        <state relative-caret-position="60">
           <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
@@ -1040,71 +1066,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/func.py">
+    <entry file="file://$PROJECT_DIR$/_init.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="240" column="102" lean-forward="false" selection-start-line="240" selection-start-column="102" selection-end-line="240" selection-end-column="102" />
+        <state relative-caret-position="720">
+          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
           <folding>
-            <element signature="e#0#22#0" expanded="true" />
-            <element signature="e#533#756#0" expanded="false" />
-            <element signature="e#789#852#0" expanded="false" />
-            <element signature="e#1917#4318#0" expanded="false" />
+            <marker date="1502416854160" expanded="true" signature="1283:1437" ph="CREATE TABLE... templates" />
+            <marker date="1502416854160" expanded="true" signature="1622:1779" ph="CREATE TABLE... notes" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/finddate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="64" column="35" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/summary.jpg">
+    <entry file="file://$PROJECT_DIR$/cache/t13.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_scan.py">
+    <entry file="file:///usr/lib/python3.5/shutil.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="865">
-          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <marker date="1502376881828" expanded="true" signature="1794:1860" ph="SELECT `layo... templates" />
-            <marker date="1502376881828" expanded="true" signature="2373:2415" ph="..." />
-          </folding>
+        <state relative-caret-position="282">
+          <caret line="499" column="4" lean-forward="false" selection-start-line="499" selection-start-column="4" selection-end-line="499" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OCR.py">
+    <entry file="file://$PROJECT_DIR$/pdf2img.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        <state relative-caret-position="100">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_init.py">
+    <entry file="file://$PROJECT_DIR$/func.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="220">
+          <caret line="11" column="34" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
           <folding>
-            <marker date="1502375443778" expanded="true" signature="1275:1429" ph="CREATE TABLE... templates" />
-            <marker date="1502375443778" expanded="true" signature="1610:1765" ph="CREATE TABLE... notes" />
+            <element signature="e#750#902#0" expanded="false" />
+            <element signature="e#935#1158#0" expanded="false" />
+            <element signature="e#1191#1254#0" expanded="false" />
+            <element signature="e#1256#1317#0" expanded="false" />
+            <element signature="e#1436#2249#0" expanded="false" />
+            <element signature="e#2318#4719#0" expanded="false" />
+            <element signature="e#4752#5133#0" expanded="false" />
+            <element signature="e#4752#4793#0" expanded="false" />
+            <element signature="e#5162#5221#0" expanded="false" />
+            <element signature="e#5300#6433#0" expanded="false" />
+            <element signature="e#6518#7316#0" expanded="false" />
+            <element signature="e#7368#7771#0" expanded="false" />
+            <element signature="e#7381#7681#0" expanded="false" />
+            <element signature="e#7491#7523#0" expanded="false" />
+            <element signature="e#7800#8154#0" expanded="false" />
+            <element signature="e#8183#8460#0" expanded="false" />
+            <marker date="1502430423789" expanded="true" signature="0:8461" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_scan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1505">
+          <caret line="647" column="128" lean-forward="false" selection-start-line="647" selection-start-column="128" selection-end-line="647" selection-end-column="128" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <marker date="1502430472501" expanded="true" signature="2142:2208" ph="SELECT `layo... templates" />
+            <marker date="1502430472501" expanded="true" signature="2721:2763" ph="..." />
+            <marker date="1502430472501" expanded="true" signature="4801:4843" ph="INSERT INTO `classes`... " />
+            <marker date="1502430472501" expanded="true" signature="5154:5195" ph="UPDATE class... " />
+            <marker date="1502430472501" expanded="true" signature="5154:5208" ph="UPDATE class... " />
+            <marker date="1502430472501" expanded="true" signature="5154:5224" ph="UPDATE class... " />
+            <marker date="1502430472501" expanded="true" signature="5154:5256" ph="UPDATE class... " />
+            <marker date="1502430472501" expanded="true" signature="7295:7361" ph="SELECT `layo... templates" />
+            <marker date="1502430472501" expanded="true" signature="9954:9996" ph="INSERT INTO `classes`... " />
+            <marker date="1502430472501" expanded="true" signature="10307:10409" ph="UPDATE `clas... " />
+            <marker date="1502430472501" expanded="true" signature="12448:12514" ph="SELECT `layo... templates" />
+            <marker date="1502430472501" expanded="true" signature="15107:15149" ph="INSERT INTO `classes`... " />
+            <marker date="1502430472501" expanded="true" signature="15460:15562" ph="UPDATE `clas... " />
+            <marker date="1502430472501" expanded="true" signature="17601:17667" ph="SELECT `layo... templates" />
+            <marker date="1502430472501" expanded="true" signature="20260:20302" ph="INSERT INTO `classes`... " />
+            <marker date="1502430472501" expanded="true" signature="20613:20715" ph="UPDATE `clas... " />
+            <marker date="1502430472501" expanded="true" signature="22754:22820" ph="SELECT `layo... templates" />
+            <marker date="1502430472501" expanded="true" signature="25413:25455" ph="INSERT INTO `classes`... " />
+            <marker date="1502430472501" expanded="true" signature="25766:25868" ph="UPDATE `clas... " />
           </folding>
         </state>
       </provider>
