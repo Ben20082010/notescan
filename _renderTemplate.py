@@ -15,6 +15,7 @@ templatePath=input("location of PDF relative to this py file")
 
 im = Im(filename=templatePath, resolution=600)
 structures=[]
+xyses=[]
 
 ### get input of mode val
 mode = input("mode?")
@@ -108,8 +109,25 @@ for i, page in enumerate(im.sequence):
         if cntId<0:
             break
     structures.append(structure)
+
+    ## insert ciricle if mood==1
+    if mode == '1':
+        xys=[]
+
+        xys.append([xf,yf])
+        xys.append([xf+wf, yf])
+        xys.append([xf,yf+hf])
+        xys.append([xf+wf, yf+hf])
+
+        xys=numpy.array(xys)
+        xys = numpy.round(xys / wp * 21, 3)
+        xyses.append(xys)
     print(structure)
 
+## insert ciricle if mood==1
+if mode=='1':
+    output = PdfFileWriter()
+    addCircle2Template(templatePath,output,0.3,xyses)
 
 print(structures)
 
@@ -122,7 +140,7 @@ insertTemplate=[
     0,  #need change later
     0,
     json.dumps(structures),
-    2
+    mode
 ]  # name, templateVersion, count, layout, mode
 
 
@@ -145,4 +163,11 @@ else:
 conn.commit()
 conn.close()
 
-shutil.copyfile(templatePath,'template/%s:%s' % (insertTemplate[0],insertTemplate[1]))
+
+if mode=='1':
+    print('x')
+    outputStream = open('template/%s:%s' % (insertTemplate[0],insertTemplate[1]), "wb")
+    output.write(outputStream)
+    outputStream.close()
+else:
+    shutil.copyfile(templatePath,'template/%s:%s' % (insertTemplate[0],insertTemplate[1]))

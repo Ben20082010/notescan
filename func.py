@@ -8,7 +8,8 @@ from PyPDF2 import PdfFileWriter, PdfFileReader
 from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4,cm
-from PIL import Image
+from reportlab.graphics.shapes import Circle
+from PIL import Image,ImageDraw
 from wand.image import Image as Im
 
 
@@ -216,6 +217,41 @@ def addQR2Template(templatePath,output, QRstr, xywhs):  #xywhs unit here is cm
         output.addPage(page)
 
 
+def addCircle2Template(inputPath, output, radius, xyses):  # xyses is [xys, xys]; where xys is [xy,xy];  unit here is cm
+    img = Image.new('RGBA', (600, 600))  ####
+    draw = ImageDraw.Draw(img)
+    draw.ellipse((0, 0, 600, 600), fill=(255, 255, 255, 255))  # white outline
+    draw.ellipse((50, 50, 550, 550), fill=(0, 0, 255, 255))  # circle core
+    draw.ellipse((281, 281, 318, 318), fill=(255, 0, 0, 255))  # point
+    img = img.transpose(Image.FLIP_TOP_BOTTOM)
+    with open('chicle.png', 'wb') as f:
+        img.save(f)
+
+
+    # gen pdf
+    packet = BytesIO()
+    can = canvas.Canvas(packet, pagesize=A4, bottomup=0)
+
+    for xys in xyses:
+        for xy in xys:
+            can.drawImage('chicle.png', (xy[0]-radius) * cm, (xy[1]-radius) * cm, (radius*2) * cm, (radius*2) * cm, mask='auto')
+        can.showPage()
+    can.save()
+
+
+    # packet.seek(0) #move to the beginning of the StringIO buffer
+    # 2input & 1output
+    new_pdf = PdfFileReader(packet)
+    # merge
+    input = PdfFileReader(open(inputPath, "rb"))
+    for i in range(input.getNumPages()):
+        page = input.getPage(i)
+        try:
+            page.mergePage(new_pdf.getPage(i))
+        except IndexError:
+            pass
+        output.addPage(page)
+
 # ## date conversion
 def validateDate(dateStr):
     try:
@@ -232,7 +268,6 @@ def validateDate(dateStr):
 
 def img2date(imgGray):
     ret, dateimg = cv2.threshold(imgGray, 100, 255, 0)
-    viewPage(dateimg)
     kernel = np.ones((3, 3), np.uint8)
     dateimg = cv2.morphologyEx(dateimg, cv2.MORPH_OPEN, kernel)
     datestr=pytesseract.image_to_string(Image.fromarray(dateimg), lang="number", config='-psm 6 -classify_bln_numeric_mode 1')

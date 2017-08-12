@@ -19,6 +19,7 @@ def getQR(jsonData,size,):
     qr.add_data(jsonData)
     qr.make(fit=True)
     img = qr.make_image()
+    print(img)
     img = img.resize((2000,2000),Image.NEAREST)
     return img
 jsonData = '{"7d529dd4-548b-4258-aa8e-23e34dc8d43d":99999999999}'
