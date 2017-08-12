@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
-
+import matplotlib.pyplot as plt
+from func import *
 
 
 def getHsvThreshold(RGB):
@@ -19,6 +20,24 @@ def viewPage(image):
     cv2.imshow('view', view)
     cv2.waitKey()
     cv2.destroyAllWindows()
+
+def findCircle(cnts,tolerance=0.10):
+    list=[] #[x,y,r]
+    for cnt in cnts:
+        # smallest circle
+        (x, y), radius = cv2.minEnclosingCircle(cnt)
+        # get r from area
+        area = cv2.contourArea(cnt)
+        r2 = np.sqrt(4 * area / np.pi) / 2
+
+        uncertanity=(radius-r2)/r2
+        print('circle uncertainty is %s ' %uncertanity)
+        if uncertanity < tolerance:
+            list.append([x,y,r2])  # as radius may be affected by extreme value.
+    return list
+
+
+
 
 # path='cache/t15.jpg'
 # path='cache/temp/3.5.jpg'
@@ -40,20 +59,35 @@ lower_blue, upper_blue = getHsvThreshold([91, 155, 213])
 mask = cv2.inRange(im_hsv, lower_blue, upper_blue)
 blur=cv2.medianBlur(mask,11 )
 
-cv2.imwrite("x.jpg",blur)
 
 # opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
 
 ret,thresh = cv2.threshold(blur,127,255,0)
+im2, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+
 viewPage(im)
 # viewPage(mask)
-# viewPage(blur)
-# viewPage(im_gray)
+viewPage(blur)
 
-circles = cv2.HoughCircles(im_gray,cv2.HOUGH_GRADIENT,1,20,param1=50,param2=30,minRadius=0,maxRadius=0,)
-circles = np.uint16(np.around(circles))
-print('x')
-for i in circles[0,:]:
-    cv2.circle(im, (i[0], i[1]), i[2], (0, 255, 0), 2)
-    cv2.circle(im, (i[0], i[1]), 2, (0, 0, 255), 3)
-viewPage(im)
+
+xyrs=findCircle(contours)
+xyrs=np.array(xyrs).astype(int)
+for xyr in xyrs:
+    x,y,r=xyr
+    cv2.circle(im,(x,y),r,(0,0,255),5)
+
+# # Perspective Transformation
+xys=np.delete(xyrs, -1, axis=1)
+xys=order_points(xys)
+print(xys)
+pts1 = np.float32(xys)
+pts2 = np.float32([[0,0],[875,0],[875,1254],[0,1254]])
+
+M = cv2.getPerspectiveTransform(pts1,pts2)
+
+dst = cv2.warpPerspective(im,M,(875,1254))
+
+plt.subplot(121),plt.imshow(im),plt.title('Input')
+plt.subplot(122),plt.imshow(dst),plt.title('Output')
+plt.show()
+
