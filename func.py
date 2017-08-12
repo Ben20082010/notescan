@@ -76,13 +76,15 @@ def order_points(pts):
     # return the ordered coordinates
     return rect
 
-def four_point_transform(image, pts, recover, returnMatrix=0):
-    # obtain a consistent order of the points and unpack them individually
-    # rect = order_points(pts)
-    # (tl, tr, br, bl) = rect  # top-left, top-right, bottom-right, and bottom-left
+# def four_point_transform(image, pts, recover, returnMatrix=0):
+def four_point_transform(image, pts, returnMatrix=0):
 
-    tl, bl, br, tr = pts
-    rect=np.array([tl, tr, br, bl], dtype="float32")
+    # obtain a consistent order of the points and unpack them individually
+    rect = order_points(pts)
+    (tl, tr, br, bl) = rect  # top-left, top-right, bottom-right, and bottom-left
+
+    # tl, bl, br, tr = pts
+    # rect=np.array([tl, tr, br, bl], dtype="float32")
 
 
     # compute the width of the new image, which will be the
@@ -107,11 +109,11 @@ def four_point_transform(image, pts, recover, returnMatrix=0):
     #
     # make top-right size of page as 0,0
 
-    xp,yp,wp,hp=recover  # with respect to QR code (ratio)
-    xp=xp*maxWidth  # covert to value from ratio (page from QR)
-    wp=wp*maxWidth
-    yp=yp*maxHeight
-    hp=hp*maxHeight
+    # xp,yp,wp,hp=recover  # with respect to QR code (ratio)
+    # xp=xp*maxWidth  # covert to value from ratio (page from QR)
+    # wp=wp*maxWidth
+    # yp=yp*maxHeight
+    # hp=hp*maxHeight
 
     #change to QR from page
 
@@ -120,15 +122,23 @@ def four_point_transform(image, pts, recover, returnMatrix=0):
     # (c,b) where a=xp, b=yp, c=xp+maxWidth, d=yp+maxHeight when use QR as reference
     # (c,d) where a=xp, b=yp, c=xp+maxWidth, d=yp+maxHeight when use QR as reference
     # (a,d) where a=xp, b=yp, c=xp+maxWidth, d=yp+maxHeight when use QR as reference
+    # dst = np.array([
+    #     [-xp-1, -yp-1],
+    #     [-xp+maxWidth - 1, -yp-1],
+    #     [-xp+maxWidth - 1, -yp+maxHeight - 1],
+    #     [-xp-1, -yp+maxHeight - 1]], dtype="float32")
+
     dst = np.array([
-        [-xp-1, -yp-1],
-        [-xp+maxWidth - 1, -yp-1],
-        [-xp+maxWidth - 1, -yp+maxHeight - 1],
-        [-xp-1, -yp+maxHeight - 1]], dtype="float32")
+        [0, 0],
+        [maxWidth - 1, 0],
+        [maxWidth - 1, maxHeight - 1],
+        [0, maxHeight - 1]], dtype="float32")
 
     # compute the perspective transform matrix and then apply it
     M = cv2.getPerspectiveTransform(rect, dst)
-    warped = cv2.warpPerspective(image, M,(int(wp),int(hp)))
+    # warped = cv2.warpPerspective(image, M,(int(wp),int(hp)))
+    warped = cv2.warpPerspective(image, M,(int(maxWidth),int(maxHeight)))
+
 
     # return the warped image
     if returnMatrix==0:
